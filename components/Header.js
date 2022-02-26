@@ -59,7 +59,7 @@ const Header = () => {
             {/* <!-- Header Logo Start --> */}
             <div className="header-logo">
                 <a href="index.html">
-                    <img src="images/logo.png" alt="Logo" />
+                    <img src="/images/logo.png" alt="Logo" />
                 </a>
             </div>
             {/* <!-- Header Logo End --> */}
