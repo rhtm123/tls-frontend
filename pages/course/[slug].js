@@ -1,7 +1,16 @@
 import React from "react";
 import Banner from "../../components/Banner";
 
-const course = () => {
+const course = ({data, error}) => {
+
+  console.log(data);
+  // console.log(error);
+
+  if (error){
+    return (<div>Error</div>)
+  }
+
+
   return (
     <div>
       <Banner>
@@ -27,14 +36,14 @@ const course = () => {
               <div class="courses-details">
                 <div class="courses-details-images">
                   <img
-                    src="assets/images/courses/courses-details.jpg"
+                    src="/images/courses/courses-details.jpg"
                     alt="Courses Details"
                   />
                   <span class="tags">Finance</span>
 
                   <div class="courses-play">
                     <img
-                      src="assets/images/courses/circle-shape.png"
+                      src="/images/courses/circle-shape.png"
                       alt="Play"
                     />
                     <a
@@ -47,15 +56,14 @@ const course = () => {
                 </div>
 
                 <h2 class="title">
-                  Finance & Investment Series: Learn to Budget and Calculate
-                  Your Net Worth.
+                  {data.name}
                 </h2>
 
                 <div class="courses-details-admin">
                   <div class="admin-author">
                     <div class="author-thumb">
                       <img
-                        src="assets/images/author/author-01.jpg"
+                        src="/images/author/author-01.jpg"
                         alt="Author"
                       />
                     </div>
@@ -179,7 +187,7 @@ const course = () => {
                               <div class="single-team">
                                 <div class="team-thumb">
                                   <img
-                                    src="assets/images/author/author-01.jpg"
+                                    src="/images/author/author-01.jpg"
                                     alt="Author"
                                   />
                                 </div>
@@ -202,7 +210,7 @@ const course = () => {
                               <div class="single-team">
                                 <div class="team-thumb">
                                   <img
-                                    src="assets/images/author/author-02.jpg"
+                                    src="/images/author/author-02.jpg"
                                     alt="Author"
                                   />
                                 </div>
@@ -225,7 +233,7 @@ const course = () => {
                               <div class="single-team">
                                 <div class="team-thumb">
                                   <img
-                                    src="assets/images/author/author-03.jpg"
+                                    src="/images/author/author-03.jpg"
                                     alt="Author"
                                   />
                                 </div>
@@ -248,7 +256,7 @@ const course = () => {
                               <div class="single-team">
                                 <div class="team-thumb">
                                   <img
-                                    src="assets/images/author/author-04.jpg"
+                                    src="/images/author/author-04.jpg"
                                     alt="Author"
                                   />
                                 </div>
@@ -393,7 +401,7 @@ const course = () => {
                                   <div class="review-author">
                                     <div class="author-thumb">
                                       <img
-                                        src="assets/images/author/author-06.jpg"
+                                        src="/images/author/author-06.jpg"
                                         alt="Author"
                                       />
                                       <i class="icofont-quote-left"></i>
@@ -427,7 +435,7 @@ const course = () => {
                                   <div class="review-author">
                                     <div class="author-thumb">
                                       <img
-                                        src="assets/images/author/author-07.jpg"
+                                        src="/images/author/author-07.jpg"
                                         alt="Author"
                                       />
                                       <i class="icofont-quote-left"></i>
@@ -461,7 +469,7 @@ const course = () => {
                                   <div class="review-author">
                                     <div class="author-thumb">
                                       <img
-                                        src="assets/images/author/author-03.jpg"
+                                        src="/images/author/author-03.jpg"
                                         alt="Author"
                                       />
                                       <i class="icofont-quote-left"></i>
@@ -729,7 +737,7 @@ const course = () => {
 
             <img
               class="shape-1 animation-right"
-              src="assets/images/shape/shape-14.png"
+              src="/images/shape/shape-14.png"
               alt="Shape"
             />
 
@@ -739,14 +747,14 @@ const course = () => {
                 <li>
                   <a href="#">
                     <img
-                      src="assets/images/google-play.png"
+                      src="/images/google-play.png"
                       alt="Google Play"
                     />
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <img src="assets/images/app-store.png" alt="App Store" />
+                    <img src="/images/app-store.png" alt="App Store" />
                   </a>
                 </li>
               </ul>
@@ -760,5 +768,23 @@ const course = () => {
     </div>
   );
 };
+
+
+export async function getServerSideProps(context) {
+  // Fetch data from external API
+  const {slug} = context.params;
+  const url = process.env.API_URL+"course/course/"+slug;
+
+  const res = await fetch(url)
+  const error = res.ok ? false : true
+  const data = await res.json()
+
+  return { 
+      props: { 
+          data:data, error:error
+      } 
+
+  }
+}
 
 export default course;
