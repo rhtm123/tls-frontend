@@ -16,13 +16,33 @@ import '../styles/plugins/swiper-bundle.min.css'
 import '../styles/style.css'
 
 import Layout from '../components/Layout'
+import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps }) {
+import AppWrapper from '../context/state';
+
+import NextNProgress from "nextjs-progressbar";
+
+
+
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
+
+  <>
+  
+  <NextNProgress />
+  <AppWrapper>
+
+  <SessionProvider session={session}>
+
   <Layout>
     <Component {...pageProps} />
 
   </Layout>
+  </SessionProvider>
+  </AppWrapper>
+
+  </>
   
   )
 }

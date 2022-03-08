@@ -1,9 +1,18 @@
 
 import React from 'react'
 
+// import { useAppContext } from '../context/state';
+
 const Header = () => {
 
-    // console.log(process.env.API_URL)
+    // const mycontext = useAppContext();
+    // const programs = mycontext.programs;
+
+
+  React.useEffect(() => {
+
+  },[]);
+
   return (
     <div>
 
@@ -69,11 +78,12 @@ const Header = () => {
                 <ul className="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#">All Course</a>
-                        <ul className="sub-menu">
-                            <li><a href="courses.html">Courses</a></li>
-                            <li><a href="courses-details.html">Courses Details</a></li>
-                        </ul>
+                        <a href="#">Programs</a>
+                        {/* {programs && <ul className="sub-menu">
+                        {programs.results.map((program, index) => (
+                            <li key={index}><a href="courses.html">{program.name}</a></li>
+                        ))}
+                        </ul>} */}
                     </li>
                     <li>
                         <a href="#">Pages </a>
