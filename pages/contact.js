@@ -2,16 +2,51 @@
 import React from 'react'
 import Banner from '../components/Banner'
 
-const contact = () => {
+import { postData } from '../functions/auth'
+
+import Link from 'next/link'
+
+const Contact = () => {
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [subject, setSubject] = React.useState("");
+    const [msg, setMsg] = React.useState("");
+
+    const [msgSent, setMsgSet] = React.useState(false);
+    const [error, setError] = React.useState(false);
+
+    const [requesting, setRequesting] = React.useState(false);
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setRequesting(true);
+        var url = process.env.API_URL + 'auth/contact-us/';
+        // console.log(name, email, subject, msg);
+    
+        postData(url, {email: email, name: name, message:msg, subject:subject})
+          .then(data => {
+            setEmail("");setMsg("");setName("");setSubject("");
+            setRequesting(false);
+            setMsgSet(true);
+            setError({});
+            
+        }).catch(error => {
+            setRequesting(false);
+            setError(error);
+            // console.log(error);
+        })
+    
+    }
+
   return (
     <div>
         <Banner>
-        <div classNameNameName="page-banner-content">
-              <ul classNameNameName="breadcrumb">
-                  <li><a href="#">Home</a></li>
-                  <li classNameNameName="active">Contact Us</li>
+        <div className="page-banner-content">
+              <ul className="breadcrumb">
+                  <li><Link href={"/"}><a>Home</a></Link></li>
+                  <li className="active">Contact Us</li>
               </ul>
-              <h2 classNameNameName="title">Contact <span>Us</span></h2>
+              <h2 className="title">Contact <span>Us</span></h2>
           </div>
         </Banner>
 
@@ -74,34 +109,43 @@ const contact = () => {
                                 <h3 className="title">Get in Touch <span>With Us</span></h3>
 
                                 <div className="form-wrapper">
-                                    <form id="contact-form" action="https://htmlmail.hasthemes.com/humayun/edule-contact.php" method="POST">
+                                    <form method="post">
                                         {/* <!-- Single Form Start --> */}
                                         <div className="single-form">
-                                            <input type="text" name="name" placeholder="Name" />
+                                            <input value={name} onChange={e=>setName(e.target.value)}  type="text" name="name" placeholder="Name" />
+                                            {error.name && <p className='text-danger'>{error.name}</p>}
+
                                         </div>
                                         {/* <!-- Single Form End --> */}
                                         {/* <!-- Single Form Start --> */}
                                         <div className="single-form">
-                                            <input type="email" name="email" placeholder="Email" />
+                                            <input value={email} onChange={e=>setEmail(e.target.value)}  type="email" name="email" placeholder="Email" />
+                                            {error.email && <p className='text-danger'>{error.email}</p>}
+
                                         </div>
                                         {/* <!-- Single Form End --> */}
                                         {/* <!-- Single Form Start --> */}
                                         <div className="single-form">
-                                            <input type="text" name="subject" placeholder="Subject" />
+                                            <input value={subject} onChange={e=>setSubject(e.target.value)}  type="text" name="subject" placeholder="Subject" />
+                                            {error.subject && <p className='text-danger'>{error.subject}</p>}
+
                                         </div>
                                         {/* <!-- Single Form End --> */}
                                         {/* <!-- Single Form Start --> */}
                                         <div className="single-form">
-                                            <textarea name="message" placeholder="Message"></textarea>
+                                            <textarea value={msg} onChange={e=>setMsg(e.target.value)}  name="message" placeholder="Message"></textarea>
+                                            {error.message && <p className='text-danger'>{error.message}</p>}
+                                            
                                         </div>
                                         {/* <!-- Single Form End --> */}
                                         <p className="form-message"></p>
                                         {/* <!-- Single Form Start --> */}
-                                        <div className="single-form">
-                                            <button className="btn btn-primary btn-hover-dark w-100">Send Message <i className="flaticon-right"></i></button>
-                                        </div>
+                                        {!requesting && <div className="single-form">
+                                            <button onClick={handleClick} className="btn btn-primary btn-hover-dark w-100">Send Message <i className="flaticon-right"></i></button>
+                                        </div> }
                                         {/* <!-- Single Form End --> */}
                                     </form>
+                                    {msgSent && <p className="text-success">Thank You for sending your message. Our team will contact you soon.</p>}
                                 </div>
                             </div>
                             {/* <!-- Contact Form End --> */}
@@ -119,4 +163,4 @@ const contact = () => {
   )
 }
 
-export default contact
+export default Contact

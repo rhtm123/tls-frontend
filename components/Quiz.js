@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-const QuizPage = () => {
+const Quiz = () => {
   return (
     <div>Quiz</div>
   )
 }
 
-export default QuizPage
+export default Quiz

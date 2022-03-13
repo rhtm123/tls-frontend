@@ -15729,8 +15729,8 @@ img {
 
 /* Custom Animation */
 .animation-round {
-  -webkit-animation: round 8s linear 0s infinite normal forwards;
-          animation: round 8s linear 0s infinite normal forwards;
+  -webkit-animation: round 25s linear 0s infinite normal forwards;
+          animation: round 25s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes round {
@@ -15756,8 +15756,8 @@ img {
 }
 
 .animation-left {
-  -webkit-animation: left 5s linear 0s infinite normal forwards;
-          animation: left 5s linear 0s infinite normal forwards;
+  -webkit-animation: left 15s linear 0s infinite normal forwards;
+          animation: left 15s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes left {
@@ -15791,8 +15791,8 @@ img {
 }
 
 .animation-right {
-  -webkit-animation: right 5s linear 0s infinite normal forwards;
-          animation: right 5s linear 0s infinite normal forwards;
+  -webkit-animation: right 15s linear 0s infinite normal forwards;
+          animation: right 15s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes right {
@@ -15826,8 +15826,8 @@ img {
 }
 
 .animation-up {
-  -webkit-animation: up 5s linear 0s infinite normal forwards;
-          animation: up 5s linear 0s infinite normal forwards;
+  -webkit-animation: up 15s linear 0s infinite normal forwards;
+          animation: up 15s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes up {
@@ -15861,8 +15861,8 @@ img {
 }
 
 .animation-down {
-  -webkit-animation: down 5s linear 0s infinite normal forwards;
-          animation: down 5s linear 0s infinite normal forwards;
+  -webkit-animation: down 15s linear 0s infinite normal forwards;
+          animation: down 15s linear 0s infinite normal forwards;
 }
 
 @-webkit-keyframes down {
@@ -16831,6 +16831,7 @@ img {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  align-items: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;

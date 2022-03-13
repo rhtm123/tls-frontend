@@ -1,20 +1,17 @@
 
-import Header from "./Header"
+
+import Header2 from "./Header2"
 
 import Footer from "./Footer"
 
 import Script from "next/script"
 
 
-const Layout = ({children}) => {
+const Layout2 = ({children}) => {
   return (
     <body>
     <div className="main-wrapper">
-        <Header />
-
-        {/* <!-- Overlay Start --> */}
-        <div className="overlay"></div>
-        {/* <!-- Overlay End --> */}
+        <Header2 />
 
 
         <main>{children}</main>
@@ -31,21 +28,21 @@ const Layout = ({children}) => {
 
 
     {/* <!-- Modernizer & jQuery JS --> */}
-    <Script src="/js/vendor/modernizr-3.11.2.min.js" />
-    <Script src="/js/vendor/jquery-3.5.1.min.js" />
-
+    <Script strategy="beforeInteractive" src="/js/vendor/modernizr-3.11.2.min.js" />
+    <Script strategy="beforeInteractive" src="/js/vendor/jquery-3.5.1.min.js" />
 
 
 
     {/* <!--====== Use the minified version files listed below for better performance and remove the files listed above ======--> */}
-    <Script src="/js/plugins.min.js" />
 
+    <Script  strategy="beforeInteractive" src="/js/plugins.min.js" />
 
-    {/* <!-- Main JS --> */}
     <Script strategy="lazyOnload" src="/js/main.js" />
+
+
 
     </body>
   )
 }
 
-export default Layout
+export default Layout2

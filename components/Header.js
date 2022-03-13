@@ -1,12 +1,17 @@
 
-import React from 'react'
+import React from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-// import { useAppContext } from '../context/state';
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 const Header = () => {
 
-    // const mycontext = useAppContext();
-    // const programs = mycontext.programs;
+  const router = useRouter();
+
+  const { data: session } = useSession()
+//   console.log(session);
 
 
   React.useEffect(() => {
@@ -67,76 +72,58 @@ const Header = () => {
 
             {/* <!-- Header Logo Start --> */}
             <div className="header-logo">
-                <a href="index.html">
+                <Link href="/">
+                <a>
                     <img src="/images/logo.png" alt="Logo" />
                 </a>
+                </Link>
             </div>
             {/* <!-- Header Logo End --> */}
 
             {/* <!-- Header Menu Start --> */}
             <div className="header-menu d-none d-lg-block">
                 <ul className="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li>
-                        <a href="#">Programs</a>
+                    <li className={router.pathname === '/' ? 'active' : ''}><Link href="/"><a>Home</a></Link></li>
+                    <li className={router.pathname === '/programs' ? 'active' : ''}>
+                    <Link href="/programs"><a>Programs</a></Link>
                         {/* {programs && <ul className="sub-menu">
                         {programs.results.map((program, index) => (
                             <li key={index}><a href="courses.html">{program.name}</a></li>
                         ))}
                         </ul>} */}
                     </li>
-                    <li>
-                        <a href="#">Pages </a>
+                    <li className={router.pathname === '/courses' ? 'active' : ''}>
+                        <Link href="/courses"><a>Courses</a></Link>
+
+                    </li>
+                    <li className={router.pathname === '/quick-tutorials' ? 'active' : ''}>
+                        <Link href="/quick-tutorials"><a>Quick Tutorials</a></Link>
+                    </li>
+
+                    {!session &&
+                    <li><a className="sign-in" href="#" onClick={() => signIn()}>Login</a></li>
+                    }
+
+                    {session &&
+                    <li className='login-header-action' style={{ paddingTop:0, paddingBottom:0 }}>
+                    <a className="action author" href="#">
+                        <img src={session.user.image} alt="Author" />
+                    </a>
                         <ul className="sub-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="register.html">Register</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="404-error.html">404 Error</a></li>
-                            <li><a href="after-enroll.html">After Enroll</a></li>
-                            <li><a href="courses-admin.html">Instructor Dashboard (Course List)</a></li>
-                            <li><a href="overview.html">Instructor Dashboard (Performance)</a></li>
-                            <li><a href="students.html">Students</a></li>
-                            <li><a href="reviews.html">Reviews</a></li>
-                            <li><a href="engagement.html">Course engagement</a></li>
-                            <li><a href="traffic-conversion.html">Traffic & conversion</a></li>
-                            <li><a href="messages.html">Messages</a></li>
+                            <li><Link href={"/profile"}><a>Profile</a></Link></li>
+                            <li><a href="#" onClick={() => signOut()}>Logout</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Blog</a>
-                        <ul className="sub-menu">
-                            <li>
-                                <a href="#">Blog</a>
-                                <ul className="sub-menu">
-                                    <li><a href="blog-grid.html">Blog</a></li>
-                                    <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">Blog Details</a>
-                                <ul className="sub-menu">
-                                    <li><a href="blog-details-left-sidebar.html">Blog Details Left Sidebar</a></li>
-                                    <li><a href="blog-details-right-sidebar.html">Blog Details Right Sidebar</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    }
                 </ul>
 
             </div>
             {/* <!-- Header Menu End --> */}
 
             {/* <!-- Header Sing In & Up Start --> */}
-            <div className="header-sign-in-up d-none d-lg-block">
-                <ul>
-                    <li><a className="sign-in" href="login.html">Sign In</a></li>
-                    <li><a className="sign-up" href="register.html">Sign Up</a></li>
-                </ul>
-            </div>
+
             {/* <!-- Header Sing In & Up End --> */}
+
 
             {/* <!-- Header Mobile Toggle Start --> */}
             <div className="header-toggle d-lg-none">

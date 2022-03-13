@@ -1,5 +1,7 @@
 import React from "react";
 
+import Link from "next/link";
+
 import Banner from "../components/Banner";
 
 const about = () => {
@@ -9,9 +11,9 @@ const about = () => {
         <div className="page-banner-content">
           <ul className="breadcrumb">
             <li>
-              <a href="#">Home</a>
+              <Link href="/"><a>Home</a></Link>
             </li>
-            <li className="active">Contact Us</li>
+            <li className="active">About us</li>
           </ul>
           <h2 className="title">
             About <span>Us</span>
@@ -35,7 +37,7 @@ const about = () => {
                       <img src="/images/logo-icon.png" alt="About" />
                     </div>
                     <p>
-                      <strong>28+</strong> Years Experience
+                      <strong>4+</strong> Years Experience
                     </p>
                   </div>
                 </div>
@@ -44,19 +46,20 @@ const about = () => {
               <div className="col-lg-6">
                 {/* <!-- About Content Start --> */}
                 <div className="about-content">
-                  <h5 className="sub-title">Welcome to Edule.</h5>
+                  <h5 className="sub-title">Welcome to The Learning Setu</h5>
                   <h2 className="main-title">
-                    You can join with Edule and upgrade your skill for your{" "}
+                    You can join our programs & courses and upgrade your skill for your{" "}
                     <span>bright future.</span>
                   </h2>
-                  <p>
+                  {/* <p>
                     Lorem Ipsum has been the industr’s standard dummy text ever
                     since unknown printer took galley type and scmbled make type
                     specimen book. It has survived not only five centuries.
-                  </p>
-                  <a href="#" className="btn btn-primary btn-hover-dark">
-                    Start A Course
+                  </p> */}
+                  <Link href="/programs"><a className="btn btn-primary btn-hover-dark">
+                   All Programs
                   </a>
+                  </Link>
                 </div>
                 {/* <!-- About Content End --> */}
               </div>
@@ -80,7 +83,7 @@ const about = () => {
                         <h3 className="title">Top Instructors</h3>
                       </div>
                     </div>
-                    <p>
+                    {/* <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled to make type specimen
                       book has survived.
@@ -88,7 +91,7 @@ const about = () => {
                     <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled make.
-                    </p>
+                    </p> */}
                   </div>
                   {/* <!-- About Item End --> */}
                 </div>
@@ -100,10 +103,10 @@ const about = () => {
                         <i className="flaticon-coding"></i>
                       </div>
                       <div className="item-title">
-                        <h3 className="title">Portable Program</h3>
+                        <h3 className="title">Best Programs</h3>
                       </div>
                     </div>
-                    <p>
+                    {/* <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled to make type specimen
                       book has survived.
@@ -111,7 +114,7 @@ const about = () => {
                     <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled make.
-                    </p>
+                    </p> */}
                   </div>
                   {/* <!-- About Item End --> */}
                 </div>
@@ -120,13 +123,13 @@ const about = () => {
                   <div className="about-item">
                     <div className="item-icon-title">
                       <div className="item-icon">
-                        <i className="flaticon-increase"></i>
+                        <i className="flaticon-phone-call"></i>
                       </div>
                       <div className="item-title">
-                        <h3 className="title">Improve Quickly</h3>
+                        <h3 className="title">Quick Support</h3>
                       </div>
                     </div>
-                    <p>
+                    {/* <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled to make type specimen
                       book has survived.
@@ -134,7 +137,7 @@ const about = () => {
                     <p>
                       Lorem Ipsum has been the industry's standard dumy text
                       since the when took and scrambled make.
-                    </p>
+                    </p> */}
                   </div>
                   {/* <!-- About Item End --> */}
                 </div>
@@ -147,7 +150,7 @@ const about = () => {
       {/* <!-- About End --> */}
 
       {/* <!-- Call to Action Start --> */}
-      <div className="section section-padding-02" style={{ padding: 70 }}>
+      <div className="section" style={{ padding:"70px 0px" }}>
         <div className="container">
           {/* <!-- Call to Action Wrapper Start --> */}
           <div className="call-to-action-wrapper">
@@ -180,12 +183,13 @@ const about = () => {
               </div>
               <div className="col-md-6">
                 <div className="call-to-action-btn">
+                  <Link href={"/contact"}>
                   <a
                     className="btn btn-primary btn-hover-dark"
-                    href="contact.html"
                   >
-                    Drop Information
+                    Contact us
                   </a>
+                  </Link>
                 </div>
               </div>
             </div>

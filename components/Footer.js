@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
 
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-md-6 order-md-1 order-lg-1">
+            <div className="col-lg-6 col-md-6 order-md-1 order-lg-1">
               {/* <!-- Footer Widget Start --> */}
               <div className="footer-widget">
                 <div className="widget-logo">
@@ -78,22 +79,13 @@ const Footer = () => {
 
                   <ul className="widget-link">
                     <li>
-                      <a href="#">Creative Writing</a>
+                      <Link href="/programs"><a>Our Programs</a></Link>
                     </li>
                     <li>
-                      <a href="#">Film & Video</a>
+                      <Link href="/courses"><a>Our Courses</a></Link>
                     </li>
                     <li>
-                      <a href="#">Graphic Design</a>
-                    </li>
-                    <li>
-                      <a href="#">UI/UX Design</a>
-                    </li>
-                    <li>
-                      <a href="#">Business Analytics</a>
-                    </li>
-                    <li>
-                      <a href="#">Marketing</a>
+                      <Link href="/quick-tutorials"><a>Quick Tutorials</a></Link>
                     </li>
                   </ul>
                 </div>
@@ -105,48 +97,18 @@ const Footer = () => {
 
                   <ul className="widget-link">
                     <li>
-                      <a href="#">Privacy Policy</a>
+                      <Link href="/about"><a>About us</a></Link>
                     </li>
                     <li>
-                      <a href="#">Discussion</a>
+                      <Link href="/contact"><a>Contact us</a></Link>
+                      
                     </li>
-                    <li>
-                      <a href="#">Terms & Conditions</a>
-                    </li>
-                    <li>
-                      <a href="#">Customer Support</a>
-                    </li>
-                    <li>
-                      <a href="#">Course FAQ’s</a>
-                    </li>
+
                   </ul>
                 </div>
                 {/* <!-- Footer Widget End --> */}
               </div>
               {/* <!-- Footer Widget Link End --> */}
-            </div>
-            <div className="col-lg-3 col-md-6 order-md-2 order-lg-3">
-              {/* <!-- Footer Widget Start --> */}
-              <div className="footer-widget">
-                <h4 className="footer-widget-title">Subscribe</h4>
-
-                <div className="widget-subscribe">
-                  <p>
-                    Lorem Ipsum has been them an industry printer took a galley
-                    make book.
-                  </p>
-
-                  <div className="widget-form">
-                    <form action="#">
-                      <input type="text" placeholder="Email here" />
-                      <button className="btn btn-primary btn-hover-dark">
-                        Subscribe Now
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-              {/* <!-- Footer Widget End --> */}
             </div>
           </div>
         </div>
@@ -165,10 +127,10 @@ const Footer = () => {
           {/* <!-- Footer Copyright Start --> */}
           <div className="copyright-wrapper">
             <div className="copyright-link">
-              <a href="#">Terms of Service</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Sitemap</a>
-              <a href="#">Security</a>
+              <Link href="/terms-and-conditions"><a>Terms of service</a></Link>
+              <Link href="/privacy-policy"><a>Provicy Policy</a></Link>
+              {/* <a href="#">Sitemap</a>
+              <a href="#">Security</a> */}
             </div>
             <div className="copyright-text">
               <p>

@@ -1,10 +1,10 @@
 
 import React from 'react'
 
-const quizzes = () => {
+const Quizzes = () => {
   return (
-    <div>quizzes</div>
+    <div>Q</div>
   )
 }
 
-export default quizzes
+export default Quizzes
