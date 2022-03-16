@@ -32,15 +32,15 @@ const Header = () => {
 
             {/* <!-- Header Top Left Start --> */}
             <div className="header-top-left">
-                <p>All course 28% off for <a href="#">Liberian people’s.</a></p>
+                <p>All course 25% off for all our <Link href="/programs"><a>programs</a></Link></p>
             </div>
             {/* <!-- Header Top Left End --> */}
 
             {/* <!-- Header Top Medal Start --> */}
             <div className="header-top-medal">
                 <div className="top-info">
-                    <p><i className="flaticon-phone-call"></i> <a href="tel:9702621413">(970) 262-1413</a></p>
-                    <p><i className="flaticon-email"></i> <a href="mailto:address@gmail.com">address@gmail.com</a></p>
+                    <p><i className="flaticon-phone-call"></i> <a href="#">(+91) 951-890-1902</a></p>
+                    <p><i className="flaticon-email"></i> <a href="#">contact@thelearningsetu.com</a></p>
                 </div>
             </div>
             {/* <!-- Header Top Medal End --> */}
@@ -48,10 +48,26 @@ const Header = () => {
             {/* <!-- Header Top Right Start --> */}
             <div className="header-top-right">
                 <ul className="social">
-                    <li><a href="#"><i className="flaticon-facebook"></i></a></li>
-                    <li><a href="#"><i className="flaticon-twitter"></i></a></li>
-                    <li><a href="#"><i className="flaticon-skype"></i></a></li>
-                    <li><a href="#"><i className="flaticon-instagram"></i></a></li>
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/thelearningsetu/">
+                      <i className="flaticon-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://twitter.com/thelearningsetu">
+                      <i className="flaticon-twitter"></i>
+                    </a>
+                  </li>
+                  {/* <li>
+                    <a href="#">
+                      <i className="flaticon-skype"></i>
+                    </a>
+                  </li> */}
+                  <li>
+                    <a target={"_blank"} href="https://www.instagram.com/thelearningsetu/">
+                      <i className="flaticon-instagram"></i>
+                    </a>
+                  </li>
                 </ul>
             </div>
             {/* <!-- Header Top Right End --> */}
@@ -92,13 +108,16 @@ const Header = () => {
                         ))}
                         </ul>} */}
                     </li>
-                    <li className={router.pathname === '/courses' ? 'active' : ''}>
+                    {/* <li className={router.pathname === '/courses' ? 'active' : ''}>
                         <Link href="/courses"><a>Courses</a></Link>
 
-                    </li>
+                    </li> */}
                     <li className={router.pathname === '/quick-tutorials' ? 'active' : ''}>
                         <Link href="/quick-tutorials"><a>Quick Tutorials</a></Link>
                     </li>
+
+                    <li className={router.pathname === '/quizzes' ? 'active' : ''}><Link href="/quizzes"><a>Quizzes</a></Link></li>
+
 
                     {!session &&
                     <li><a className="sign-in" href="#" onClick={() => signIn()}>Login</a></li>

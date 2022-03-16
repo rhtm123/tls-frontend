@@ -1,12 +1,19 @@
 import React from "react";
 
 import Link from "next/link";
+import Head from "next/head";
 
 import Banner from "../components/Banner";
 
-const about = () => {
+const About = () => {
   return (
     <div>
+
+      <Head>
+        <title>About - The Learning Setu</title>
+        <meta name="description" content="We are an educational institute. We envision a future of our fellow Indian students as Leaders, Innovators, and creators." />
+      </Head>
+
       <Banner>
         <div className="page-banner-content">
           <ul className="breadcrumb">
@@ -174,9 +181,9 @@ const about = () => {
               <div className="col-md-6">
                 {/* <!-- Section Title Start --> */}
                 <div className="section-title shape-02">
-                  <h5 className="sub-title">Become A Instructor</h5>
+                  <h5 className="sub-title">Become An Instructor</h5>
                   <h2 className="main-title">
-                    You can join with Edule as <span>a instructor?</span>
+                    You can join with The Learning Setu as <span>an instructor?</span>
                   </h2>
                 </div>
                 {/* <!-- Section Title End --> */}
@@ -202,4 +209,5 @@ const about = () => {
   );
 };
 
-export default about;
+About.layout = "L1";
+export default About;

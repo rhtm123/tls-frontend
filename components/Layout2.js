@@ -37,8 +37,10 @@ const Layout2 = ({children}) => {
 
     <Script  strategy="beforeInteractive" src="/js/plugins.min.js" />
 
-    <Script strategy="lazyOnload" src="/js/main.js" />
+    
 
+    {/* <Script strategy="lazyOnload" src="/js/plugins/video-playlist.js" /> */}
+    <Script strategy="lazyOnload" src="/js/main.js" />
 
 
     </body>

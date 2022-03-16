@@ -1,9 +1,11 @@
 import React from "react";
+import Head from "next/head";
+import Article from "../../components/Article";
 import Banner from "../../components/Banner";
 
 import Error from "../../components/Error";
 
-const article = ({data, error}) => {
+const ArticlePage = ({data, error}) => {
 
   // console.log(data);
 
@@ -13,6 +15,10 @@ const article = ({data, error}) => {
 
   return (
     <div>
+      <Head>
+        <title>{data.header} - The Learning Setu</title>
+        <meta name="description" content={data.sub_header} />
+      </Head>
       <Banner>
         <div className="page-banner-content">
           <ul className="breadcrumb">
@@ -176,4 +182,5 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default article;
+ArticlePage.layout = "L1";
+export default ArticlePage;

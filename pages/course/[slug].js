@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import Banner from "../../components/Banner";
 
 import Error from "../../components/Error";
@@ -29,13 +30,19 @@ const Course = ({data, error}) => {
 
   return (
     <div>
+      <Head>
+        <title>{data.name} - The Learning Setu</title>
+        <meta name="robots" content="noindex" />
+
+        {/* <meta name="description" content={data.sub_header} /> */}
+      </Head>
       <Banner>
         <div className="page-banner-content">
           <ul className="breadcrumb">
             <li>
               <a href="#">Home</a>
             </li>
-            <li className="active">Courses Details</li>
+            <li className="active">Course Details</li>
           </ul>
           <h2 className="title">
             {data.name} <span></span>
@@ -281,4 +288,5 @@ export async function getServerSideProps(context) {
   }
 }
 
+Course.layout = "L1";
 export default Course;

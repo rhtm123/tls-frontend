@@ -24,8 +24,9 @@ const Footer = () => {
                 </div>
 
                 <div className="widget-address">
-                  <h4 className="footer-widget-title">Caribbean Ct</h4>
-                  <p>Haymarket, Virginia (VA).</p>
+                  {/* <h4 className="footer-widget-title">Caribbean Ct</h4>
+                  <p>Haymarket, Virginia (VA).</p> */}
+                  <p>We are an educational institute. We envision a future of our fellow Indian students as Leaders, Innovators, and creators.</p>
                 </div>
 
                 <ul className="widget-info">
@@ -33,36 +34,36 @@ const Footer = () => {
                     <p>
                       {" "}
                       <i className="flaticon-email"></i>{" "}
-                      <a href="mailto:address@gmail.com">address@gmail.com</a>{" "}
+                      <a href="#">contact@thelearningsetu.com</a>{" "}
                     </p>
                   </li>
                   <li>
                     <p>
                       {" "}
                       <i className="flaticon-phone-call"></i>{" "}
-                      <a href="tel:9702621413">(970) 262-1413</a>{" "}
+                      <a href="tel:+919518901902">(+91) 951-890-1902</a>{" "}
                     </p>
                   </li>
                 </ul>
 
                 <ul className="widget-social">
                   <li>
-                    <a href="#">
+                    <a target="_blank" href="https://www.facebook.com/thelearningsetu/">
                       <i className="flaticon-facebook"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a target="_blank" href="https://twitter.com/thelearningsetu">
                       <i className="flaticon-twitter"></i>
                     </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="#">
                       <i className="flaticon-skype"></i>
                     </a>
-                  </li>
+                  </li> */}
                   <li>
-                    <a href="#">
+                    <a target={"_blank"} href="https://www.instagram.com/thelearningsetu/">
                       <i className="flaticon-instagram"></i>
                     </a>
                   </li>
@@ -81,9 +82,9 @@ const Footer = () => {
                     <li>
                       <Link href="/programs"><a>Our Programs</a></Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link href="/courses"><a>Our Courses</a></Link>
-                    </li>
+                    </li> */}
                     <li>
                       <Link href="/quick-tutorials"><a>Quick Tutorials</a></Link>
                     </li>
@@ -127,16 +128,15 @@ const Footer = () => {
           {/* <!-- Footer Copyright Start --> */}
           <div className="copyright-wrapper">
             <div className="copyright-link">
-              <Link href="/terms-and-conditions"><a>Terms of service</a></Link>
-              <Link href="/privacy-policy"><a>Provicy Policy</a></Link>
+              <Link href="/terms-of-service"><a>Terms of service</a></Link>
+              <Link href="/privacy-policy"><a>Provicy policy</a></Link>
               {/* <a href="#">Sitemap</a>
               <a href="#">Security</a> */}
             </div>
             <div className="copyright-text">
               <p>
-                &copy; 2021 <span> Edule </span> Made with{" "}
-                <i className="icofont-heart-alt"></i> by{" "}
-                <a href="#">Codecarnival</a>
+                &copy; 2020 <span> The Learning Setu </span>
+                {/* <a href="#">Codecarnival</a> */}
               </p>
             </div>
           </div>

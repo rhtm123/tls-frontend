@@ -14,6 +14,7 @@ const Program = ({program}) => {
         setCount(data.length);
        } else {
         
+
       }
     }).catch(error=>{  })
 
@@ -28,7 +29,7 @@ const Program = ({program}) => {
                             <Link href={"/program/"+program.slug}><a>
                               <img
                                 src={program.image}
-                                alt="Courses"
+                                alt={program.name}
                               />
                             </a>
                             </Link>
@@ -62,16 +63,18 @@ const Program = ({program}) => {
                               </Link>
                             </h4>
                             <div className="courses-meta">
-                              
+{/* 
+                              <span>
+                                {" "}
+                                <i className="icofont-clock-home"></i> {}
+                              </span>
+                               */}
                               <span>
                                 {" "}
                                 <i className="icofont-read-book"></i> {count} Courses{" "}
                               </span>
 
-                              <span>
-                                {" "}
-                                <i className="icofont-clock-time"></i> 08 hr 15 mins
-                              </span>
+                              
 
                             </div>
                             <div className="courses-price-review">

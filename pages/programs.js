@@ -1,6 +1,8 @@
 
 import React from 'react'
 
+import Head from 'next/head';
+
 import Banner from '../components/Banner'
 import { useAppContext } from '../context/state';
 
@@ -14,6 +16,11 @@ const Programs = () => {
 
   return (
     <div>
+
+      <Head>
+        <title>Programs - The Learning Setu</title>
+        <meta name="description" content="Join our programs and learn website development, Data science" />
+      </Head>
       <Banner>
         <div className="page-banner-content">
               <ul className="breadcrumb">
@@ -78,4 +85,5 @@ const Programs = () => {
   )
 }
 
+Programs.layout = "L1";
 export default Programs

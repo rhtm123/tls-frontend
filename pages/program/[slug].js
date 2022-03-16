@@ -1,6 +1,10 @@
 
 import React from 'react';
 
+import Head from 'next/head';
+
+import Link from 'next/link';
+
 import Banner from '../../components/Banner';
 
 import Error from '../../components/Error';
@@ -30,11 +34,18 @@ const ProgramPage = ({data, error}) => {
 
   return (
     <div>
+
+      <Head>
+        <title>{data.name} - The Learning Setu</title>
+        <meta name="robots" content="noindex" />
+
+        {/* <meta name="description" content={data.sub_header} /> */}
+      </Head>
     <Banner>
       <div className="page-banner-content">
         <ul className="breadcrumb">
           <li>
-            <a href="#">Home</a>
+            <Link href="/"><a>Home</a></Link>
           </li>
           <li className="active">Courses Details</li>
         </ul>
@@ -54,7 +65,7 @@ const ProgramPage = ({data, error}) => {
               <div className="courses-details-images">
                 <img
                   src={data.image}
-                  alt="Courses Details"
+                  alt={data.name}
                 />
                 {/* <span className="tags">Finance</span> */}
 
@@ -245,5 +256,5 @@ export async function getServerSideProps(context) {
   }
 }
 
-
+ProgramPage.layout = "L1";
 export default ProgramPage

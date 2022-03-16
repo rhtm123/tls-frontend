@@ -1,10 +1,12 @@
 
-import React from 'react'
-import Banner from '../components/Banner'
+import React from 'react';
+import Banner from '../components/Banner';
 
-import { postData } from '../functions/auth'
+import Head from 'next/head';
 
-import Link from 'next/link'
+import { postData } from '../functions/auth';
+
+import Link from 'next/link';
 
 const Contact = () => {
     const [name, setName] = React.useState("");
@@ -40,6 +42,12 @@ const Contact = () => {
 
   return (
     <div>
+
+      <Head>
+        <title>Contact us - The Learning Setu</title>
+        <meta name="description" content="Feel free to contact us at contact@thelearningsetu.com" />
+      </Head>
+
         <Banner>
         <div className="page-banner-content">
               <ul className="breadcrumb">
@@ -72,7 +80,7 @@ const Contact = () => {
                                     </div>
                                     <div className="info-content">
                                         <h6 className="title">Phone No.</h6>
-                                        <p><a href="tel:88193326867">(88) 193 326 867</a></p>
+                                        <p><a href="tel:+919518901902">(+91) 951-890-1902</a></p>
                                     </div>
                                 </div>
                                 {/* <!-- Single Contact Info End --> */}
@@ -83,12 +91,12 @@ const Contact = () => {
                                     </div>
                                     <div className="info-content">
                                         <h6 className="title">Email Address.</h6>
-                                        <p><a href="mailto:edule100@gmail.com">edule100@gmail.com</a></p>
+                                        <p><a href="mailto:cc@thelearningsetu.com">cc@thelearningsetu.com</a></p>
                                     </div>
                                 </div>
                                 {/* <!-- Single Contact Info End --> */}
                                 {/* <!-- Single Contact Info Start --> */}
-                                <div className="single-contact-info">
+                                {/* <div className="single-contact-info">
                                     <div className="info-icon">
                                         <i className="flaticon-pin"></i>
                                     </div>
@@ -96,7 +104,7 @@ const Contact = () => {
                                         <h6 className="title">Office Address.</h6>
                                         <p>Talga, Alabama, USA</p>
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <!-- Single Contact Info End --> */}
                             </div>
                             {/* <!-- Contact Info End --> */}
@@ -163,4 +171,5 @@ const Contact = () => {
   )
 }
 
+Contact.layout = "L1";
 export default Contact

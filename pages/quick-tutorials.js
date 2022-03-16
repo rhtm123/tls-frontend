@@ -1,5 +1,7 @@
 
-import React from 'react'
+import React from 'react';
+
+import Head from 'next/head';
 
 import Banner from '../components/Banner';
 import { useAppContext } from '../context/state';
@@ -27,14 +29,19 @@ const Articles = () => {
   return (
     <div>
 
+      <Head>
+        <title>Quick Tutorials - The Learning Setu</title>
+        <meta name="description" content="Read our quick tutorials. Python, Django, Website Development, Data Science" />
+      </Head>
+
         <Banner>
 
         <div className="page-banner-content">
                     <ul className="breadcrumb">
                         <li><a href="#">Home</a></li>
-                        <li className="active">Articles</li>
+                        <li className="active">Quick Tutorials</li>
                     </ul>
-                    <h2 className="title">Our <span>Articles</span></h2>
+                    <h2 className="title">Quick <span>Tutorials</span></h2>
           </div>
         </Banner>
 
@@ -61,4 +68,5 @@ const Articles = () => {
   )
 }
 
+Articles.layout = "L1";
 export default Articles

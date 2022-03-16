@@ -8,15 +8,15 @@ export const Course1 = ({course}) => {
   return (
     <div className="courses-item">
         <div className="item-thumb">
-        <a href="#">
-            <img src={course.image} alt="Courses" />
-        </a>
+        <Link href={"/course/"+course.slug}><a>
+            <img src={course.image} alt={course.name} />
+        </a></Link>
         </div>
         <div className="content-title">
             <div className="meta">
                 <a href="#" className="action">Live</a>
             </div>
-            <h3 className="title"><a href="#">{course.name}</a></h3>
+            <h3 className="title"><Link href={"/course/"+course.slug}><a>{course.name}</a></Link></h3>
         </div>
 
     </div>

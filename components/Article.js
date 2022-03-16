@@ -1,5 +1,7 @@
 
-import React from 'react'
+import React from 'react';
+
+import Link from 'next/link';
 
 const Article = ({article}) => {
   return (
@@ -7,7 +9,7 @@ const Article = ({article}) => {
 
 <div className="single-blog">
     <div className="blog-image">
-        <a href="blog-details-left-sidebar.html"><img src={article.feature_img} alt="Blog" /></a>
+        <Link href={"/quick-tutorial/"+article.slug}><a><img src={article.feature_img} alt="Blog" /></a></Link>
     </div>
     <div className="blog-content">
         {/* <div className="blog-author">
@@ -26,12 +28,12 @@ const Article = ({article}) => {
 
         <h3 className="title"><a href="blog-details-left-sidebar.html">{article.header}</a></h3>
 
-        <div className="blog-meta">
-            <span> <i className="icofont-calendar"></i>{article.created}</span>
-            <span> <i className="icofont-heart"></i> 2,568+ </span>
-        </div>
+        {/* <div className="blog-meta"> */}
+            {/* <span> <i className="icofont-clock-time"></i>{article.time_required}</span> */}
+            {/* <span> <i className="icofont-heart"></i> 2,568+ </span> */}
+        {/* </div> */}
 
-        <a href="blog-details-left-sidebar.html" className="btn btn-secondary btn-hover-primary">Read More</a>
+        <Link href={"/quick-tutorial/"+article.slug}><a className="btn btn-secondary btn-hover-primary">Read More</a></Link>
     </div>
 </div>
 
