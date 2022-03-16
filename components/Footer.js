@@ -48,12 +48,12 @@ const Footer = () => {
 
                 <ul className="widget-social">
                   <li>
-                    <a target="_blank" href="https://www.facebook.com/thelearningsetu/">
+                    <a  rel="noreferrer" target="_blank" href="https://www.facebook.com/thelearningsetu/">
                       <i className="flaticon-facebook"></i>
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://twitter.com/thelearningsetu">
+                    <a  rel="noreferrer" target="_blank" href="https://twitter.com/thelearningsetu">
                       <i className="flaticon-twitter"></i>
                     </a>
                   </li>
@@ -63,7 +63,7 @@ const Footer = () => {
                     </a>
                   </li> */}
                   <li>
-                    <a target={"_blank"} href="https://www.instagram.com/thelearningsetu/">
+                    <a  rel="noreferrer" target={"_blank"} href="https://www.instagram.com/thelearningsetu/">
                       <i className="flaticon-instagram"></i>
                     </a>
                   </li>
