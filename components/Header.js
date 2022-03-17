@@ -175,8 +175,8 @@ const Header = () => {
 
 {/* <!-- Mobile Top Medal Start --> */}
 <div className="mobile-top">
-    <p><i className="flaticon-phone-call"></i> <a href="tel:9702621413">(970) 262-1413</a></p>
-    <p><i className="flaticon-email"></i> <a href="mailto:address@gmail.com">address@gmail.com</a></p>
+<p><i className="flaticon-phone-call"></i> <a href="#">(+91) 951-890-1902</a></p>
+                    <p><i className="flaticon-email"></i> <a href="#">contact@thelearningsetu.com</a></p>
 </div>
 {/* <!-- Mobile Top Medal End --> */}
 
