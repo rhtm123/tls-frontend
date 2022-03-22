@@ -145,13 +145,13 @@ const Header = () => {
 
 
             {/* <!-- Header Mobile Toggle Start --> */}
-            <div className="header-toggle d-lg-none">
+            {/* <div className="header-toggle d-lg-none">
                 <a className="menu-toggle" href="javascript:void(0)">
                     <span></span>
                     <span></span>
                     <span></span>
                 </a>
-            </div>
+            </div> */}
             {/* <!-- Header Mobile Toggle End --> */}
 
         </div>

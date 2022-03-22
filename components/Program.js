@@ -79,7 +79,7 @@ const Program = ({program}) => {
                             </div>
                             <div className="courses-price-review">
                               <div className="courses-price">
-                                <span className="sale-parice">₹ {program.price}</span>
+                                <span className="sale-parice">₹ {program.price.toLocaleString()}</span>
                                 {/* <span className="old-parice">$440.00</span> */}
                               </div>
                               <div className="courses-review">

@@ -121,11 +121,13 @@ const Course = ({data, error}) => {
                         <div className="tab-description">
                           <div className="description-wrapper">
                             <h3 className="tab-title">Overview</h3>
-                            <div>{data.overview}</div>
+                            <div  dangerouslySetInnerHTML={{ __html: data.overview }}></div>
+
                           </div>
                           <div className="description-wrapper">
                             <h3 className="tab-title">Curriculum:</h3>
-                            <div>{data.content}</div>
+                            <div  dangerouslySetInnerHTML={{ __html: data.content }}></div>
+
                           </div>
                          
                         </div>
@@ -186,7 +188,7 @@ const Course = ({data, error}) => {
                 {/* <!-- Sidebar Widget Information Start --> */}
                 <div className="sidebar-widget widget-information">
                   <div className="info-price">
-                    <span className="price">₹ {data.upgrade_price}</span>
+                    <span className="price">₹ {data.upgrade_price.toLocaleString()}</span>
                   </div>
                   <div className="info-list">
                     <ul>

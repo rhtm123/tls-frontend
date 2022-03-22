@@ -94,6 +94,7 @@ const SolveQuiz = ({quiz}) => {
     const [optionLoading, setOptionLoading] = React.useState(false);
 
     const [showAnswer, setShowAnswer] = React.useState(false);
+    const [rightCount, setRightCount] = React.useState(0);
 
     React.useEffect(() => {
       let url = process.env.API_URL + 'quiz/questions/?quiz='+quiz.id;
@@ -110,6 +111,17 @@ const SolveQuiz = ({quiz}) => {
       }).catch(error=>{  })
   },[]);
 
+
+  React.useEffect(() => {
+    let question;
+    for (question of questions){
+        if (question.selected==question.right_option){
+          setRightCount(rightCount+1);
+        }
+    }
+  },[showAnswer]);
+
+
   const loadOptions = (quesID) => {
     var url = process.env.API_URL + 'quiz/options/?question='+quesID;
     fetch(url)
@@ -117,7 +129,6 @@ const SolveQuiz = ({quiz}) => {
         if (response.ok) {
             var data = await response.json();
             setOptions(data);
-            addRight();
             setOptionLoading(false);
             }
         else{}
@@ -125,16 +136,20 @@ const SolveQuiz = ({quiz}) => {
   }
 
   const addRight = () =>{
+    // console.log("added ", currentCount ,questions[currentCount]);
+
     let option;
-    for (option of options) {
+    for (option of options){
         if (option.is_right===true){
             questions[currentCount]['right_option'] = option.id.toString();
+            // console.log(questions)
         }
     }
   }
 
   const handleNP = (np) => {
         let new_count = np==='n' ? currentCount+1:currentCount-1
+        addRight();
         setCurrentCount(new_count);
         setCurrentQuestion(questions[new_count]);
         setOptionLoading(true);
@@ -151,7 +166,7 @@ const SolveQuiz = ({quiz}) => {
 
   const handleChange = (event) =>{
     var selected = event.target.value;
-    var right_option = questions[currentCount]['right_option'];
+    // var right_option = questions[currentCount]['right_option'];
 
     questions[currentCount]['selected'] = selected;
     // this.addUserQuestion(selected, right_option);
@@ -167,12 +182,10 @@ const SolveQuiz = ({quiz}) => {
 }
 
 const handleSubmit = () => {
-  // let question;
-  // for (question of questions){
-  //     if (question.selected==question.right_option){
-  //         this.setState({right_count:this.state.right_count+1});
-  //     }
-  // }
+
+  addRight();
+
+
   
   setShowAnswer(true);
 
@@ -196,11 +209,13 @@ const handleSubmit = () => {
     {showAnswer && 
                     <div >
 
+                    <h4>Your Score : {rightCount} / {questions.length}</h4>
+
                     {questions.map((question, key)=>
                             <div key={key} className="card" style={{'padding':16, 'margin':12}}>
                             {question.right_option==question.selected ?
-                                <h4 className="">{key+1}. Right Answer</h4>:
-                                <h4 className="">{key+1}. Wrong Answer</h4>
+                                <h5 className="">{key+1}. Right Answer</h5>:
+                                <h5 className="">{key+1}. Wrong Answer</h5>
                             }
                             <div className="" dangerouslySetInnerHTML={{__html:question.text}} />
                             <Options question={question} questionID={question.id} />

@@ -126,7 +126,8 @@ const ProgramPage = ({data, error}) => {
                       <div className="tab-description">
                         <div className="description-wrapper">
                           <h3 className="tab-title">Overview</h3>
-                          <div>{data.detail}</div>
+                          <div  dangerouslySetInnerHTML={{ __html: data.detail }}></div>
+
                         </div>
                         
                        
@@ -155,7 +156,7 @@ const ProgramPage = ({data, error}) => {
               {/* <!-- Sidebar Widget Information Start --> */}
               <div className="sidebar-widget widget-information">
                 <div className="info-price">
-                  <span className="price">₹ {data.price}</span>
+                  <span className="price">₹ {data.price.toLocaleString()}</span>
                 </div>
                 <div className="info-list">
                   <ul>
