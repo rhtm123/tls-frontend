@@ -1,19 +1,25 @@
 import React from 'react'
+import { useSession, signIn, signOut } from "next-auth/react"
+import Link from 'next/link'
+
 
 const Header2 = () => {
+
+    const { data: session } = useSession()
+    
   return (
     <div className="section login-header">
         <div className="login-header-wrapper navbar navbar-expand">
             
             <div className="login-header-logo logo-2">
-                <a href="index.html"><img src="/images/logo-icon.png" alt="Logo" /></a>
-                <a href="index.html"><img src="/images/text-logo.png" alt="Logo" /></a>
+                    
+            <Link href="/"><a><img src="/images/logo.png" alt="Logo" /></a></Link>
             </div>
 
 
 
             <div className="login-header-action action-2 ml-auto">
-                <div className="dropdown">
+                {/* <div className="dropdown">
                     <button className="action notification" data-bs-toggle="dropdown">
                         <i className="flaticon-notification"></i>
                         <span className="active"></span>
@@ -71,11 +77,11 @@ const Header2 = () => {
                         </ul>
                         <a className="all-notification" href="#">See all notifications <i className="icofont-simple-right"></i></a>
                     </div>
-                </div>
+                </div> */}
 
-                <a className="action author" href="#">
-                    <img src="/images/author/author-07.jpg" alt="Author" />
-                </a>
+                    {session && <a className="action author" href="#">
+                        <img src={session.user.image} alt="Author" />
+                    </a>}
 
                 <div className="dropdown">
                     <button className="action more" data-bs-toggle="dropdown">
@@ -83,11 +89,18 @@ const Header2 = () => {
                         <span></span>
                         <span></span>
                     </button>
-                    <ul className="dropdown-menu">
-                        <li><a className="" href="#"><i className="icofont-user"></i> Profile</a></li>
-                        <li><a className="" href="#"><i className="icofont-inbox"></i> Inbox</a></li>
-                        <li><a className="" href="#"><i className="icofont-logout"></i> Sign Out</a></li>
-                    </ul>
+                    {session && <ul className="dropdown-menu">
+                        <li><Link href={"/profile"}><a><i className="icofont-user"></i> Profile</a></Link></li>
+
+                        {/* <li><a className="" href="#"><i className="icofont-inbox"></i> Inbox</a></li> */}
+                        <li><a onClick={() => signOut()} className="" href="#"><i className="icofont-logout"></i> Sign Out</a></li>
+
+                    </ul> }
+
+                    {!session && <ul className="dropdown-menu">
+                        <li><a className="sign-in" href="#" onClick={() => signIn()}>Login</a></li>
+
+                    </ul>}
                 </div>
             </div>
         </div>

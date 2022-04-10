@@ -7,8 +7,6 @@ import Error from "../../components/Error";
 
 const ArticlePage = ({data, error}) => {
 
-  // console.log(data);
-
   if (error){
     return (<Error />)
   }

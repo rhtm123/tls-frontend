@@ -96,14 +96,14 @@ const Course = ({data, error}) => {
                           Description
                         </button>
                       </li>
-                      <li>
+                      {/* <li>
                         <button
                           data-bs-toggle="tab"
                           data-bs-target="#instructors"
                         >
                           Instructors
                         </button>
-                      </li>
+                      </li> */}
                       {/* <li>
                         <button data-bs-toggle="tab" data-bs-target="#reviews">
                           Reviews
@@ -121,6 +121,7 @@ const Course = ({data, error}) => {
                         <div className="tab-description">
                           <div className="description-wrapper">
                             <h3 className="tab-title">Overview</h3>
+                            <br />
                             <div  dangerouslySetInnerHTML={{ __html: data.overview }}></div>
 
                           </div>
@@ -218,16 +219,16 @@ const Course = ({data, error}) => {
                       </li>
                     </ul>
                   </div>
-                  <div className="info-btn">
+                  {/* <div className="info-btn">
                     <a href="#" className="btn btn-primary btn-hover-dark">
                       Enroll Now
                     </a>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <!-- Sidebar Widget Information End --> */}
 
                 {/* <!-- Sidebar Widget Share Start --> */}
-                <div className="sidebar-widget">
+                {/* <div className="sidebar-widget">
                   <h4 className="widget-title">Share Course:</h4>
 
                   <ul className="social">
@@ -257,7 +258,7 @@ const Course = ({data, error}) => {
                       </a>
                     </li>
                   </ul>
-                </div>
+                </div> */}
                 {/* <!-- Sidebar Widget Share End --> */}
               </div>
               {/* <!-- Courses Details Sidebar End --> */}

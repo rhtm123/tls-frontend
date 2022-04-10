@@ -126,7 +126,7 @@ const Header = () => {
                     {session &&
                     <li className='login-header-action' style={{ paddingTop:0, paddingBottom:0 }}>
                     <a className="action author" href="#">
-                        <img src={session.user.image} alt="Author" />
+                        <img src={session.user.image} alt={"profile"} />
                     </a>
                         <ul className="sub-menu">
                             <li><Link href={"/profile"}><a>Profile</a></Link></li>

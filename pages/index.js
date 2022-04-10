@@ -151,10 +151,8 @@ function Home() {
           {/* <!-- All Courses Top End --> */}
 
 
-          {/* <!-- All Courses tab content Start --> */}
           <div className="tab-content courses-tab-content">
             <div className="tab-pane fade show active" id="tabs1">
-              {/* <!-- All Courses Wrapper Start --> */}
               <div className="courses-wrapper">
                 
                   {programs && <div className="row">
@@ -165,15 +163,12 @@ function Home() {
                   }
                   
               </div>
-              {/* <!-- All Courses Wrapper End --> */}
             </div>
 
           </div>
-          {/* <!-- All Courses tab content End --> */}
 
         </div>
       </div>
-      {/* <!-- All Courses End --> */}
 
 
       <div className="section section-padding mt-n1" style={{paddingBottom:0}}>

@@ -3,11 +3,11 @@ import React from "react";
 const Banner = ({ children }) => {
   return (
     <div className="section page-banner">
-      <img
+      {/* <img
         className="shape-1 animation-round"
         src="/images/shape/shape-8.png"
         alt="Shape"
-      />
+      /> */}
 
       <img className="shape-2" src="/images/shape/shape-23.png" alt="Shape" />
 
@@ -19,11 +19,11 @@ const Banner = ({ children }) => {
 
       {/* <!-- Shape Icon Box Start --> */}
       <div className="shape-icon-box">
-        <img
+        {/* <img
           className="icon-shape-1 animation-left"
           src="/images/shape/shape-5.png"
           alt="Shape"
-        />
+        /> */}
 
         <div className="box-content">
           <div className="box-wrapper">
@@ -41,11 +41,11 @@ const Banner = ({ children }) => {
 
       <img className="shape-3" src="/images/shape/shape-24.png" alt="Shape" />
 
-      <img
+      {/* <img
         className="shape-author"
         src="/images/author/author-11.jpg"
         alt="Shape"
-      />
+      /> */}
     </div>
   );
 };

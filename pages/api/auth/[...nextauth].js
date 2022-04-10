@@ -1,26 +1,53 @@
 
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
+import { postData } from "../../../functions/auth";
 
 export default NextAuth({
-  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    // ...add more providers here
   ],
   callbacks: {
-    
-    async session({ session, token, user }) {
-      // Send properties to the client, like an access_token from a provider.
-      session.accessToken = token.accessToken;
-      // console.log("session",session);
-      // console.log("token", token);
-      // console.log("user",user);
-      return session
+
+    async signIn({ user, account, profile, credentials }) {
+      
+      // console.log("signIn")
+
+      let r = (Math.random() + 1).toString(36).substring(7);
+      let url = process.env.API_URL +`auth/users/`;
+      let firstname = profile.given_name
+      let lastname = profile.family_name
+      let email = profile.email
+
+
+      postData(url, {"password":r, "firstname":firstname, "lastname":lastname,"email":email})
+        .then(data => {
+          return true
+        }).catch(error => {
+          return true
+      })
+
+      return true
     }
+    
+    // async session({ session, token, user }) {
+    //   // Send properties to the client, like an access_token from a provider.
+    //   session.accessToken = token.accessToken;
+    //   console.log("session",session);
+
+
+    //   return session
+    // },
+
+    // async jwt({ token, user, account, profile, isNewUser }) {
+
+    //   console.log("jwt", token);
+
+    //   return token
+    // }
   }
 })
 

@@ -1,21 +1,117 @@
 
 import React from 'react';
-
 import Head from 'next/head';
-
 import Link from 'next/link';
-
 import Banner from '../../components/Banner';
-
 import Error from '../../components/Error';
+
+import { useSession, signIn, } from "next-auth/react";
+
+import { useRouter } from 'next/router';
+
+
+
+import { postData, postDataAuth } from '../../functions/auth';
 
 import {Course1} from '../../components/Course';
 
 const ProgramPage = ({data, error}) => {
-  // console.log(data);
+
+  const router = useRouter();
+
+  const { data: session } = useSession();
+
   const [courses, setCourses] = React.useState([]);
+  const [batches, setBatches] = React.useState([]);
+  const [user, setUser] = React.useState();
+
+  
+  const getUser = () => {
+    // console.log("fhdj")
+    if (session){
+        let url = process.env.API_URL + 'auth/get-user-email/';
+        postData(url, {"email":session.user.email})
+          .then(data => {
+            setUser(data);
+          }).catch(error => {
+            console.log(error)
+        })
+      }
+  }
+
 
   React.useEffect(() => {
+    getUser();
+    setInterval(function() {
+      getUser();
+    }, 120000);
+
+  },[session]);
+
+
+  const getBatches = () => {
+    let url = process.env.API_URL + 'lesson/batches/?program='+data.id;
+    fetch(url)
+    .then(async (response) => {
+      if (response.ok) {
+        let data1 = await response.json();
+        // console.log(data)
+        setBatches(data1.results);
+        // console.log(data)
+       } else {
+      }
+    }).catch(error=>{  })
+
+  }
+
+
+  const joinBatch = (batch) => {
+      // console.log(batch);
+      // console.log(data)
+
+      let url = process.env.API_URL + `lesson/userbatches/?user=${user.user.id}&batch=${batch.id}&ordering=-updated`;
+
+
+      if (session){
+
+            fetch(url)
+              .then(async (response) => {
+                if (response.ok) {
+                  let data1 = await response.json();
+                  if (data1.count ==0){
+
+                    postDataAuth(url, user.access, {"user_id":user.user.id, "batch_id":batch.id})
+                    .then(data2 => {
+                      router.push("/enrolled/program/"+data.slug);
+                    }).catch(error => {
+                      console.log(error)
+                  })
+
+                  } else{
+                    let last_user_batch = data1.results[0]
+                    let url = process.env.API_URL +`lesson/userbatch/${last_user_batch.id}/`
+                    postDataAuth(url, user.access, {}, "PATCH")
+                    .then(data3 => {
+                      console.log(data3);
+                    }).catch(error => {
+                      console.log(error)
+                  })
+
+
+
+                    router.push("/enrolled/program/"+data.slug);
+                  }
+                }
+              }).catch(error=>{  })
+           
+      } else {
+        signIn();
+      }
+
+  }
+
+
+  const getCourses = () => {
     let url = process.env.API_URL + 'course/program_courses/?course=&program='+data.id;
     fetch(url)
     .then(async (response) => {
@@ -26,7 +122,15 @@ const ProgramPage = ({data, error}) => {
         
       }
     }).catch(error=>{  })
-},[]);
+
+  }
+
+  React.useEffect(() => {
+
+    getBatches();
+    getCourses();
+
+  },[data]);
 
   if (error){
     return (<Error />)
@@ -160,22 +264,7 @@ const ProgramPage = ({data, error}) => {
                 </div>
                 <div className="info-list">
                   <ul>
-                    {/* <li>
-                      <i className="icofont-man-in-glasses"></i>{" "}
-                      <strong>Instructor</strong> <span>Pamela Foster</span>
-                    </li> */}
-                    {/* <li>
-                      <i className="icofont-clock-time"></i>{" "}
-                      <strong>Duration</strong> <span>{data.time_required} hrs</span>
-                    </li> */}
-                    {/* <li>
-                      <i className="icofont-ui-video-play"></i>{" "}
-                      <strong>Lectures</strong> <span>29</span>
-                    </li> */}
-                    {/* <li>
-                      <i className="icofont-bars"></i> <strong>Level</strong>{" "}
-                      <span>{data.difficult_level}</span>
-                    </li> */}
+
                     {/* <li>
                       <i className="icofont-book-alt"></i>{" "}
                       <strong>Language</strong> <span>{data.language}</span>
@@ -186,16 +275,55 @@ const ProgramPage = ({data, error}) => {
                     </li>
                   </ul>
                 </div>
-                <div className="info-btn">
+                {/* <div className="info-btn">
                   <a href="#" className="btn btn-primary btn-hover-dark">
                     Enroll Now
                   </a>
-                </div>
+                </div> */}
               </div>
               {/* <!-- Sidebar Widget Information End --> */}
 
               {/* <!-- Sidebar Widget Share Start --> */}
-              <div className="sidebar-widget">
+
+              <div className="sidebar-widget widget-information">
+                <div className="info-price">
+                  <h4>Upcoming Batches</h4>
+                </div>
+                {batches.length >0 && <div className="info-list">
+                  <ul>
+
+                  {batches.map((batch, index) => (
+                          <li key={index}>
+                              <i className="icofont-clock-time"></i>{" "}
+                              <strong>{new Date(batch.start_date).toDateString()}</strong> 
+                              
+                              <span>
+                                <a onClick={() => joinBatch(batch)} href="#" className="">
+                                Enroll
+                                </a>
+                              </span>
+                        </li> 
+                    ))}
+
+
+                  </ul>
+                </div> }
+
+                {batches.length ==0 &&
+                  <div>
+
+                <div className="info-price">
+                  <br />
+                  <h6>No batch</h6>
+                </div>
+                  
+                  </div>
+                }
+              </div>
+
+
+
+              {/* <div className="sidebar-widget">
                 <h4 className="widget-title">Share Course:</h4>
 
                 <ul className="social">
@@ -225,7 +353,7 @@ const ProgramPage = ({data, error}) => {
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> */}
               {/* <!-- Sidebar Widget Share End --> */}
             </div>
             {/* <!-- Courses Details Sidebar End --> */}

@@ -1,6 +1,9 @@
 
 import React from 'react'
-import useSWR from 'swr'
+import useSWR from 'swr';
+
+import Link from 'next/link';
+
 
 
 // const fetcher = (...args) => fetch(...args).then(res => res.json())
@@ -23,7 +26,7 @@ const Lessons = ({topic}) => {
    React.useEffect(() => {
 
 
-    let url = process.env.API_URL + 'lession/lessions/?ordering=created&topic='+topic.id 
+    let url = process.env.API_URL + 'lesson/lessons/?ordering=order&topic='+topic.id 
 
       fetch(url)
       .then(async (response) => {
@@ -46,10 +49,14 @@ const Lessons = ({topic}) => {
   return (
     <nav className="vids">
                 {lessons.map((lesson, index) => (
-                    <a key={index} className="link" href="https://player.vimeo.com/external/215175080.hd.mp4?s=5b17787857fd95646e67ad0f666ea69388cb703c&amp;profile_id=119">
-                       <p>01. The Complete Medicine MasterclassName</p>
-                       <span className="total-duration">08 minutes</span>
-                   </a>
+                    <Link  key={index} href={"/lesson/"+lesson.slug}><a>
+                       <p>{lesson.name}</p>
+
+                    {lesson.lession_type===0 && <span className="info-icon"><i className="flaticon-play"></i></span>}
+                    {lesson.lession_type===1 && <span className="info-icon"><i className="flaticon-coding"></i></span>}
+                    {lesson.lession_type===2 && <span className="info-icon"><i className="flaticon-tutor"></i></span>}
+                       
+                   </a></Link>
                     ))}                    
     </nav>
   )

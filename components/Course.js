@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 export const Course1 = ({course}) => {
 
-
   return (
     <div className="courses-item">
         <div className="item-thumb">

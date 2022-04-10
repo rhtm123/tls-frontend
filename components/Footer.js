@@ -88,6 +88,10 @@ const Footer = () => {
                     <li>
                       <Link href="/quick-tutorials"><a>Quick Tutorials</a></Link>
                     </li>
+
+                    <li>
+                      <Link href="/quizzes"><a>Quizzes</a></Link>
+                    </li>
                   </ul>
                 </div>
                 {/* <!-- Footer Widget End --> */}
