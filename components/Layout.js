@@ -10,10 +10,10 @@ const Layout = ({children}) => {
   return (
     <body>
     <div className="main-wrapper">
-        <Header />
+        {/* <Header /> */}
 
         {/* <!-- Overlay Start --> */}
-        <div className="overlay"></div>
+        {/* <div className="overlay"></div> */}
         {/* <!-- Overlay End --> */}
 
 
@@ -21,12 +21,12 @@ const Layout = ({children}) => {
 
 
         {/* <!--Back To Start--> */}
-        <a href="#" className="back-to-top">
+        {/* <a href="#" className="back-to-top">
             <i className="icofont-simple-up"></i>
-        </a>
+        </a> */}
         {/* <!--Back To End--> */}
 
-        <Footer />
+        {/* <Footer /> */}
     </div>
 
 
